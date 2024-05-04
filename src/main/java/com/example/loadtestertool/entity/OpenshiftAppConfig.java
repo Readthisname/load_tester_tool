@@ -1,7 +1,5 @@
 package com.example.loadtestertool.entity;
 
-import org.aspectj.apache.bcel.classfile.Module;
-
 import javax.persistence.*;
 import java.util.List;
 
