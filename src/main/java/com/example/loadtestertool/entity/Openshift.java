@@ -1,9 +1,10 @@
 package com.example.loadtestertool.entity;
 
+
 import javax.persistence.*;
 
+
 @Entity
-@Table(name = "openshift")
 public class Openshift {
 
   @Id

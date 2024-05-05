@@ -1,10 +1,10 @@
 package com.example.loadtestertool.entity;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
+
 
 @Entity
-@Table(name = "os_app_configs")
 public class OpenshiftAppConfig {
 
   @Id
@@ -14,27 +14,18 @@ public class OpenshiftAppConfig {
   @Column(length = 128, nullable = false)
   private String name;
 
-  @Column
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
   private Openshift openshift;
 
-  @Column
-  private List<OpenshiftConfigParameters> configParameters;
+  public OpenshiftAppConfig() {}
 
-  public OpenshiftAppConfig() {
-  }
-
-  public OpenshiftAppConfig(String name, List<OpenshiftConfigParameters> configParameters) {
+  public OpenshiftAppConfig(String name, Set<OpenshiftConfigParameters> configParameters) {
     this.name = name;
-    this.configParameters = configParameters;
   }
 
-  public Integer getId() {
-    return id;
-  }
+  public Integer getId() { return id; }
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+  public void setId(Integer id) { this.id = id; }
 
   public String getName() { return name; }
 
@@ -44,16 +35,9 @@ public class OpenshiftAppConfig {
 
   public void setOpenshift(Openshift openshift) { this.openshift = openshift; }
 
-  public List<OpenshiftConfigParameters> getConfigParameters() { return configParameters; }
-
-  public void setConfigParameters(List<OpenshiftConfigParameters> configParameters) {
-    this.configParameters = configParameters;
-  }
-
   @Override
   public String toString() {
-    return "Openshift Config Parameter [id=" + id + ", name=" + name + ", openshift= " + openshift +
-            ", configParameters=" + configParameters + "]";
+    return "Openshift Config Parameter [id=" + id + ", name=" + name + "]";
   }
 
 }
